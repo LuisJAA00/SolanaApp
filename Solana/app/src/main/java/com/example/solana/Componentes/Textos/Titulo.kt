@@ -21,12 +21,13 @@ fun Titulo(
 )
 {
     Box(contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxWidth())
+        modifier = modifier.fillMaxWidth())
     {
         // sniglet
         Text(text = texto, modifier = Modifier.padding(8.dp),
             style = TextStyle(fontSize = 23.sp),
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+
         )
     }
 

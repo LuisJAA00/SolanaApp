@@ -67,7 +67,8 @@ fun Privacidad(
                 verticalArrangement = Arrangement.Bottom
             ){
                 Row (modifier = modifier){
-                    ButtonDefault("Aceptar","PantallaInicio",navController)
+
+                    ButtonDefault(texto = "Aceptar", navigateTo = "NewUser", navController = navController)
                 }
             }
         }
