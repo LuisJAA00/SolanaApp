@@ -55,6 +55,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.solana.Componentes.Botones.ButtonDefault
 import com.example.solana.Componentes.DropDown.AddDropDown
+import com.example.solana.Componentes.Textos.TextWithBottomLine
 import com.example.solana.Componentes.Textos.Titulo
 import com.example.solana.Pantallas.PantallaInicio.PantallaInicio
 import com.example.solana.UserViewModel.UserViewModel
@@ -173,18 +174,7 @@ fun NewUser(
 
     }
 }
-@Composable
-fun TextWithBottomLine(texto: String)
-{
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .bottomBorder(1.dp, Color.Black)
-    ){
-        Text(text = texto, modifier = Modifier.padding(bottom = 4.dp))
 
-    }
-}
 fun Modifier.bottomBorder(strokeWidth: Dp, color: Color) = composed(
     factory = {
         val density = LocalDensity.current
