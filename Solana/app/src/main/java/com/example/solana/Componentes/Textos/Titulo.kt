@@ -24,8 +24,8 @@ fun Titulo(
         modifier = modifier.fillMaxWidth())
     {
         // sniglet
-        Text(text = texto, modifier = Modifier.padding(8.dp),
-            style = TextStyle(fontSize = 23.sp),
+        Text(text = texto, modifier = Modifier.padding(4.dp),
+            style = TextStyle(fontSize = 20.sp),
             fontWeight = FontWeight.Bold,
 
         )

@@ -166,7 +166,7 @@ fun NewUser(
 
             ButtonDefault(
                 texto = "Aceptar",
-                navigateTo = "PantallaInicio",
+                navigateTo = "Menu",
                 navController = navController,
                 enable = enableButton)
         }
