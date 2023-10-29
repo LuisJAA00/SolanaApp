@@ -33,6 +33,7 @@ fun PantallaInicio(
         Image(painter = painterResource(id = R.drawable.mainlogo), contentDescription = null,
             modifier = Modifier.padding(top = 1.dp))
         Titulo("¡Hola!")
+        ButtonINICIO("Log In","LogIn",navController = navController)
         ButtonINICIO("Sign up","TerminosYcondiciones",navController = navController)
 
     }

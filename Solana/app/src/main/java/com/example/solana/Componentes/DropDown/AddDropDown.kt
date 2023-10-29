@@ -1,6 +1,7 @@
 package com.example.solana.Componentes.DropDown
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -37,9 +38,9 @@ fun AddDropDown(
     var expanded by remember { mutableStateOf(false)}
     Box(
         modifier = Modifier
-
             .wrapContentSize()
             .border(1.dp, Color.Gray)
+            .clickable { expanded = !expanded }
     ) {
         Row(
             modifier = Modifier,
@@ -68,15 +69,8 @@ fun AddDropDown(
         onDismissRequest = {expanded = false},
 
         ) {
-
-
-
         for (option in listaOpciones) {
-
             DropdownMenuItem(text = { Text(text = option) }, onClick = { selectedOption.value = option; expanded = false}  )
         }
-
-
-
     }
 }

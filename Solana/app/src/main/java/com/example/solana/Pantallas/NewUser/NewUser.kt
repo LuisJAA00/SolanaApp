@@ -54,7 +54,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.solana.Componentes.Botones.ButtonDefault
+import com.example.solana.Componentes.Botones.ButtonDefaultWithToastMssg
 import com.example.solana.Componentes.DropDown.AddDropDown
+import com.example.solana.Componentes.TextFields.AddTextField
 import com.example.solana.Componentes.Textos.TextWithBottomLine
 import com.example.solana.Componentes.Textos.Titulo
 import com.example.solana.Pantallas.PantallaInicio.PantallaInicio
@@ -111,7 +113,11 @@ fun NewUser(
             onValueChange = { NombreCompleto = it },
             "Basic information",
             Icons.Default.Person,
-            Color.Black
+            Color.Black,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+            horizontalAlignment = Alignment.TopStart
         )
 
 
@@ -123,14 +129,22 @@ fun NewUser(
             onValueChange = { NumeroEmail = it },
             "Telefono o correo",
             Icons.Default.Email,
-            Color.Black
+            Color.Black,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+            horizontalAlignment = Alignment.TopStart
         )
         AddTextField(
             value = Contraseña,
             onValueChange = { Contraseña = it },
             "Contraseña",
             Icons.Default.Lock,
-            Color.Black
+            Color.Black,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+            horizontalAlignment = Alignment.TopStart
         )
 
 
@@ -141,22 +155,32 @@ fun NewUser(
             onValueChange = { Folio = it },
             "Numero de folio del paciente",
             Icons.Default.Info,
-            Color.Black
+            Color.Black,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+            horizontalAlignment = Alignment.TopStart
         )
 
         val CancerOptions = listOf("Option 1", "Option 2", "Option 3")
         AddDropDown(
             text = "Cancer type",
             selectedOption = selectedOption,
-            listaOpciones = CancerOptions)
+            listaOpciones = CancerOptions,
+            )
 
 
-        if( NombreCompleto =="" || NumeroEmail == "")
+        if( NombreCompleto =="" || NumeroEmail == "" || Contraseña =="" || Folio == "" || selectedOption.value == "")
         {
             enableButton.value = false
         }
         else
         {
+            userViewModel.setName(NombreCompleto)
+            userViewModel.setEmail(NumeroEmail)
+            userViewModel.setPass(Contraseña)
+            userViewModel.setFolio(Folio)
+            userViewModel.setCancerType(selectedOption.value)
             enableButton.value = true
         }
         Box(modifier = Modifier
@@ -164,11 +188,21 @@ fun NewUser(
             contentAlignment = Alignment.Center)
         {
 
-            ButtonDefault(
-                texto = "Aceptar",
-                navigateTo = "Menu",
-                navController = navController,
-                enable = enableButton)
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+                contentAlignment = Alignment.BottomCenter
+            )
+            {
+
+                ButtonDefault(
+                    texto = "Aceptar",
+                    navigateTo = "Menu",
+                    navController = navController,
+                    enable = enableButton)
+            }
+
         }
 
 
@@ -194,48 +228,5 @@ fun Modifier.bottomBorder(strokeWidth: Dp, color: Color) = composed(
     }
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AddTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    labelText: String,
-    icon: ImageVector,
-    color: Color,
-) {
-    val myColor = color
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White)
-    ) {
-        Box(
-            modifier = Modifier
-                .border(1.dp, Color.Black, shape = RoundedCornerShape(4.dp))
-        ) {
-            TextField(
-                value = value,
-                onValueChange = onValueChange,
-                label = { Text(text = labelText) },
-                leadingIcon = {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = "Icon",
-                        tint = myColor
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    unfocusedLabelColor = myColor,
-                    cursorColor = myColor,
-                    focusedLabelColor = myColor,
-                    textColor = myColor,
-                    containerColor = myColor.copy(.2f),
-                    focusedIndicatorColor = myColor,
-                    unfocusedIndicatorColor = myColor.copy(0.5f)
-                )
-            )
-        }
-    }
-}
 

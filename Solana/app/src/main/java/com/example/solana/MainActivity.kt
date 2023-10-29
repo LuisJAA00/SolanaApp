@@ -23,8 +23,9 @@ import androidx.navigation.NavHost
 import androidx.navigation.compose.composable
 import com.example.solana.Pantallas.PantallaInicio.PantallaInicio
 import com.example.solana.Componentes.Botones.ButtonDefault
-import com.example.solana.Componentes.TextFields.AddTextfield
+
 import com.example.solana.Pantallas.Expertos.ExpertsScreen
+import com.example.solana.Pantallas.LogIn.LogIn
 import com.example.solana.Pantallas.Menu.MenuScreen
 import com.example.solana.Pantallas.NewUser.NewUser
 import com.example.solana.Pantallas.Privacidad.Privacidad
@@ -89,6 +90,10 @@ fun SolanaApp(
         composable("Menu")
         {
             MenuScreen(navController = navController)
+        }
+        composable("LogIn")
+        {
+            LogIn(navController = navController, userViewModel = userViewModel)
         }
 
     }

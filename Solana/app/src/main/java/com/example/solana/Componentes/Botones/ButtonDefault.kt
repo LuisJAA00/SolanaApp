@@ -32,6 +32,12 @@ fun ButtonDefault(
         colors = ButtonDefaults.buttonColors(Color(0xFF846DF7)),
         enabled = enable.value
     ) {
-        Text(text = texto, style = TextStyle(fontSize = 17.sp),color = Color.White)
+        var textColor = Color.White
+        if(!enable.value)
+        {
+            textColor = Color.Gray
+        }
+
+        Text(text = texto, style = TextStyle(fontSize = 17.sp),color = textColor)
     }
 }
